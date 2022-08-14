@@ -1,0 +1,19 @@
+extends Node2D
+
+export(int) var max_health = 1 setget set_max_health
+onready var health = max_health setget set_health
+
+
+signal no_health
+signal health_changed(value)
+signal max_health_changed(value)
+
+func set_max_health(value) -> void:
+	max_health = value
+	emit_signal("max_health_changed", value)
+
+func set_health(value) -> void:
+	health = value
+	emit_signal("health_changed", health)
+	if health <= 0:
+		emit_signal("no_health")
