@@ -1,0 +1,32 @@
+[gd_scene format=2]
+
+[node name="UISpriteSelector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PreviousButton" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -215.0
+margin_right = -203.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 38.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

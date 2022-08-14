@@ -1,0 +1,195 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scens/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scens/Chair.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scens/ChairBack.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scens/ChairLeft.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scens/ChairRight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scens/Table.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/testSprites.png" type="Texture" id=7]
+[ext_resource path="res://Scens/FoodTable3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scens/FoodTable4.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scens/FoodTable.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scens/FoodTable2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/CreateSpawner.gd" type="Script" id=12]
+[ext_resource path="res://Effects/Mutator.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Global/Camera.tscn" type="PackedScene" id=14]
+
+[sub_resource type="TileSet" id=1]
+0/name = "testSprites.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 96, 32, 16 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 12 )
+
+[node name="LevelBorder" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelBorder"]
+polygon = PoolVector2Array( -128, -80, -120, -80, -120, 80, 120, 80, 120, -80, -128, -80, -128, -88, 128, -88, 128, 88, -128, 88 )
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -2
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -393225, 0, 0, -393224, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -327689, 0, 0, -327688, 0, 0, -327687, 0, 0, -327686, 0, 0, -327685, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -393211, 0, 0, -393210, 0, 0, -393209, 0, 0, -393208, 0, 0, -262153, 0, 0, -262152, 0, 0, -262151, 0, 0, -262150, 0, 1, -262149, 0, 1, -262148, 0, 1, -262147, 0, 1, -262146, 0, 1, -262145, 0, 1, -327680, 0, 1, -327679, 0, 1, -327678, 0, 1, -327677, 0, 1, -327676, 0, 1, -327675, 0, 1, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -196617, 0, 0, -196616, 0, 0, -196615, 0, 0, -196614, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -131081, 0, 0, -131080, 0, 0, -131079, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -65545, 0, 0, -65544, 0, 0, -65543, 0, 0, -65542, 0, 0, -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -9, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 131063, 0, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera" parent="." instance=ExtResource( 14 )]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -112, 8 )
+
+[node name="Player2" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 112, 8 )
+move_left_ac = "move_left2"
+move_right_ac = "move_right2"
+move_up_ac = "move_up2"
+move_down_ac = "move_down2"
+interact_ac = "interact2"
+player_number = 2
+
+[node name="Item5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 88, 56 )
+
+[node name="Item7" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 104, 40 )
+
+[node name="Item6" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 72, 40 )
+
+[node name="Item8" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 88, 40 )
+
+[node name="Item9" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -88, 24 )
+
+[node name="Item10" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -88, 56 )
+
+[node name="Item11" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -72, 40 )
+
+[node name="Item12" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -104, 40 )
+
+[node name="Item13" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( -88, 40 )
+
+[node name="Item14" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -88, -40 )
+
+[node name="Item15" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -88, -8 )
+
+[node name="Item16" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -72, -24 )
+
+[node name="Item17" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -104, -24 )
+
+[node name="Item18" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( -88, -24 )
+
+[node name="Item19" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 88, -40 )
+
+[node name="Item20" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 88, -8 )
+
+[node name="Item21" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 104, -24 )
+
+[node name="Item22" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 72, -24 )
+
+[node name="Item23" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 88, -24 )
+
+[node name="Item2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( -24, -72 )
+
+[node name="Item25" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 40, -72 )
+
+[node name="Item3" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -8, -72 )
+
+[node name="Item27" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -56, -72 )
+
+[node name="Item4" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 8, -72 )
+
+[node name="Item26" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( -40, -72 )
+
+[node name="Item32" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 88, -72 )
+
+[node name="Item30" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( -88, -72 )
+
+[node name="Item29" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 56, -72 )
+
+[node name="Item24" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 24, -72 )
+
+[node name="Item31" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 72, -72 )
+
+[node name="Item28" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -72, -72 )
+
+[node name="Item" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 88, 24 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="Mutator" parent="." instance=ExtResource( 13 )]
+pause_mode = 2
+position = Vector2( -120, -88 )
+
+[node name="Mutator_Timer" type="Timer" parent="."]
+wait_time = 21.0
+one_shot = true
+autostart = true
+
+[connection signal="dead" from="YSort/Player" to="." method="_on_Player_dead"]
+[connection signal="dead" from="YSort/Player2" to="." method="_on_Player_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="draw_finished" from="Mutator" to="." method="_on_Mutator_draw_finished"]
+[connection signal="timeout" from="Mutator_Timer" to="." method="_on_Mutator_Timer_timeout"]
+
+[editable path="YSort/Item15"]
+[editable path="YSort/Item15/Item/Hitbox"]
